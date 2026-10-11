@@ -1,0 +1,24 @@
+# Pre-flight only. Nothing here is the real thing: three hello-worlds on the
+# same base images (hello-app and hello-py also install the same OS/Python
+# packages the real session needs, so Docker's build cache carries over and
+# the real build is fast on the day), and one throwaway web server on the
+# port the session uses.
+services:
+  hello-db:
+    image: postgres:16-alpine
+    entrypoint: ["sh", "-c", "echo 'hello from postgres:16-alpine'; echo ARCH=$$(uname -m)"]
+
+  hello-app:
+    build: ./hello-app
+    image: preflight-hello-app
+
+  hello-py:
+    build: ./hello-py
+    image: preflight-hello-py
+
+  hello-port:
+    build: ./hello-py
+    image: preflight-hello-py
+    command: ["python", "-m", "http.server", "8080"]
+    ports:
+      - "8085:8080"
