@@ -1,6 +1,6 @@
 # Pre-flight check
 
-Run this once, a day or two before the session (not weeks before - see "timing" below). It takes 1-3 minutes (a few hundred MB of downloads the first time) and tells you whether your machine will be able to run the session's setup. It is not the session itself: it only starts a few hello-world containers.
+For **Testing the Untestable**. Run this once, a day or two before the session (not weeks before - see "timing" below). It takes 1-3 minutes (a few hundred MB of downloads the first time) and tells you whether your machine will be able to run the session's setup. It is not the session itself: it only starts a few hello-world containers.
 
 It also does real work you'll benefit from on the day: `hello-app` and `hello-py` install the exact same operating-system and Python packages the real session needs (just built into throwaway placeholder programs, not the real thing). Docker caches those downloads-and-installs, so when the real setup runs on the day, it reuses that cache instead of redoing it - which is normally the slowest part of a first-time build, especially on a shared venue network.
 
