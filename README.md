@@ -4,9 +4,18 @@ For **Testing the Untestable**. Run this once, a day or two before the session (
 
 It also does real work you'll benefit from on the day: `hello-app` and `hello-py` install the exact same operating-system and Python packages the real session needs (just built into throwaway placeholder programs, not the real thing). Docker caches those downloads-and-installs, so when the real setup runs on the day, it reuses that cache instead of redoing it - which is normally the slowest part of a first-time build, especially on a shared venue network.
 
+## Before you start: is Docker running?
+
+Having Docker installed is not enough - it also has to be **running**. This is the most common reason the check fails, especially on a machine where Docker has never been used before.
+
+- **Windows / macOS:** open **Docker Desktop** from the Start menu or Applications. The first time, accept its terms and skip or close the sign-in screen (an account is not needed). Wait until the bottom-left corner says **Engine running** (green), which can take a minute or two. You can close the window afterwards; Docker keeps running in the background (whale icon in the system tray / menu bar).
+- **Linux:** `sudo systemctl start docker`
+
+To double-check, run `docker info` in a terminal. If it prints a long list of details, Docker is running. If it says something like `Cannot connect to the Docker daemon` or `error during connect`, it isn't yet.
+
 ## Run it
 
-Make sure Docker Desktop (or Docker Engine on Linux) is running, then from this folder:
+From this folder:
 
 **macOS, Linux, WSL, Git Bash**
 
@@ -29,7 +38,7 @@ powershell -ExecutionPolicy Bypass -File .\preflight.ps1
 =============================================================
 ```
 
-If you see `NOT READY` instead, the lines marked `[FAIL]` say what is wrong and what to try. Fix it and run the script again. If you are stuck, send the organiser the file `preflight-report.txt` that appears in this folder.
+If you see `NOT READY` instead, the lines marked `[FAIL]` say what is wrong and what to try. Fix it and run the script again. If it says **Docker is installed but not running**, start Docker as described in "Before you start" above, wait for it to finish starting, and re-run - nothing else needs fixing. If you are stuck, send the organiser the file `preflight-report.txt` that appears in this folder.
 
 `[WARN]` lines are not blockers, but read them.
 
