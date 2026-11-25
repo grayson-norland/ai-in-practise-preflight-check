@@ -4,6 +4,20 @@ For **Testing the Untestable**. Run this once, a day or two before the session (
 
 It also does real work you'll benefit from on the day: `hello-app` and `hello-py` install the exact same operating-system and Python packages the real session needs (just built into throwaway placeholder programs, not the real thing). Docker caches those downloads-and-installs, so when the real setup runs on the day, it reuses that cache instead of redoing it - which is normally the slowest part of a first-time build, especially on a shared venue network.
 
+## Get the files
+
+Open a terminal (on macOS: **Terminal**; on Windows: **PowerShell**, or your WSL/Git Bash window if you use one), go to wherever you keep projects, and run:
+
+```
+git clone https://github.com/grayson-norland/ai-in-practise-preflight-check.git
+```
+
+This creates a folder called `ai-in-practise-preflight-check` with everything inside it.
+
+- **macOS, first time using git:** a pop-up may ask to install the **command line developer tools**. Click **Install**, wait for it to finish (a few minutes), then run the `git clone` line again.
+- **Windows, `git` not recognised:** install Git from https://git-scm.com/download/win, then open a new PowerShell window and run the line again.
+- **Rather not use git?** On the GitHub page, click the green **Code** button, then **Download ZIP**, and unzip it. The folder will be called `ai-in-practise-preflight-check-main` instead - use that name in the steps below.
+
 ## Before you start: is Docker running?
 
 Having Docker installed is not enough - it also has to be **running**. This is the most common reason the check fails, especially on a machine where Docker has never been used before.
@@ -15,7 +29,13 @@ To double-check, run `docker info` in a terminal. If it prints a long list of de
 
 ## Run it
 
-From this folder:
+First, move into the `ai-in-practise-preflight-check` folder - the one that contains `preflight.sh` and this README, not the folder you cloned into:
+
+```
+cd ai-in-practise-preflight-check
+```
+
+Then run the line for your system:
 
 **macOS, Linux, WSL, Git Bash**
 
